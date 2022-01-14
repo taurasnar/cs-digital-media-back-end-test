@@ -6,7 +6,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import csdigitalmediabackendtest.entities.Book;
+import csdigitalmediabackendtest.models.Book;
 import csdigitalmediabackendtest.exceptions.ResourceNotFoundException;
 import csdigitalmediabackendtest.repositories.BookRepository;
 import java.util.List;

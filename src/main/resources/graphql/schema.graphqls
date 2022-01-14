@@ -1,0 +1,32 @@
+scalar Date
+
+schema {
+    query: Query
+}
+
+type Query {
+    findAllBooks: [Book]!
+    findBookById(bookId: String!): Book!
+    findAllAuthors: [Author]!
+}
+
+type Mutation {
+    createAuthor(first_name: String!, last_name: String!, birth_Date: Date!) : Author!
+}
+
+type Book {
+    id: ID!
+    title: String!
+    genre: Genre!
+}
+
+type Author {
+    id: ID!
+    first_name: String!
+    last_name: String!
+    birth_date: Date!
+}
+
+enum Genre {
+    FICTION, NONFICTION
+}

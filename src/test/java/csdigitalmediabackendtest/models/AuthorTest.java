@@ -1,18 +1,15 @@
-package csdigitalmediabackendtest.entities;
+package csdigitalmediabackendtest.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 class AuthorTest {
 
-    private final transient Date date = new Date();
-    private final transient Timestamp birthDate = new Timestamp(date.getTime());
+    private final transient LocalDate birthDate = LocalDate.now();
 
     @Test
     void constructorTest() {
@@ -26,8 +23,7 @@ class AuthorTest {
     @Test
     void gettersAndSettersTest() {
         Author author = new Author(1L, "name", "surname", birthDate);
-        Date newDate = new Date();
-        Timestamp newBirthDate = new Timestamp(newDate.getTime());
+        LocalDate newBirthDate = LocalDate.now();
 
         author.setId(2L);
         author.setFirstName("newName");

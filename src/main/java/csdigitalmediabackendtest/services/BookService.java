@@ -1,6 +1,6 @@
 package csdigitalmediabackendtest.services;
 
-import csdigitalmediabackendtest.entities.Book;
+import csdigitalmediabackendtest.models.Book;
 import csdigitalmediabackendtest.exceptions.ResourceNotFoundException;
 import csdigitalmediabackendtest.repositories.BookRepository;
 import java.util.List;

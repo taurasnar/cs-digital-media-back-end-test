@@ -1,4 +1,4 @@
-package csdigitalmediabackendtest.entities;
+package csdigitalmediabackendtest.models;
 
 public interface Updatable<T> {
 

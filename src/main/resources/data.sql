@@ -1,0 +1,15 @@
+INSERT INTO BOOKS (ID, TITLE, GENRE)
+    VALUES (101, 'Title example 1', 'FICTION'),
+    (102, 'Title example 2', 'NONFICTION');
+
+INSERT INTO AUTHORS (ID, FIRST_NAME, LAST_NAME, BIRTH_DATE)
+    VALUES (101, 'Name1', 'Surname1', '1991-01-01'),
+    (102, 'Name2', 'Surname2', '1992-02-02');
+
+INSERT INTO BOOK_AUTHOR_LOOKUP (A_ID, B_ID)
+    VALUES (101, 101),
+    (101, 102),
+    (102, 102);
+
+
+

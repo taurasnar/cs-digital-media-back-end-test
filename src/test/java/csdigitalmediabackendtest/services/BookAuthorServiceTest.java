@@ -6,8 +6,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import csdigitalmediabackendtest.entities.BookAuthor;
-import csdigitalmediabackendtest.entities.BookAuthorId;
+import csdigitalmediabackendtest.models.BookAuthor;
+import csdigitalmediabackendtest.models.BookAuthorId;
 import csdigitalmediabackendtest.exceptions.ResourceNotFoundException;
 import csdigitalmediabackendtest.repositories.BookAuthorRepository;
 import java.util.List;

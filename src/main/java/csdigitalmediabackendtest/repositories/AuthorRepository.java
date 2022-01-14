@@ -1,6 +1,6 @@
 package csdigitalmediabackendtest.repositories;
 
-import csdigitalmediabackendtest.entities.Author;
+import csdigitalmediabackendtest.models.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
