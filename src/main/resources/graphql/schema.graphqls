@@ -1,32 +1,73 @@
+# Scalars
+
 scalar Date
 
+# Schema
+
 schema {
-    query: Query
+    query: Query,
+    mutation: Mutation
 }
 
+# Inputs
+
+input CreateAuthorInput {
+    firstName: String!
+    lastName: String!
+    birthDate: Date!
+}
+
+input CreateBookInput {
+    title: String!
+    genre: Genre!
+    authorsIds: [ID!]!
+}
+
+input UpdateBookInput {
+    id: ID!
+    title: String!
+    genre: Genre!
+    authorsIds: [ID!]!
+}
+
+# Enums
+
+enum Genre {
+    FICTION, NONFICTION
+}
+
+# Types
+
 type Query {
-    findAllBooks: [Book]!
-    findBookById(bookId: String!): Book!
-    findAllAuthors: [Author]!
+    # Endpoints for books
+    findAllBooks: [Book!]!
+    findBookById(id: ID!): Book!
+
+    # Endpoints for authors
+    findAllAuthors: [Author!]!
+    findAuthorById(id: ID!): Author!
 }
 
 type Mutation {
-    createAuthor(first_name: String!, last_name: String!, birth_Date: Date!) : Author!
+    # Endpoints for books
+    createBook(book: CreateBookInput!): Book!
+    updateBook(book: UpdateBookInput!): Book!
+    deleteBook(id: ID!): Boolean
+
+    # Endpoints for authors
+    createAuthor(author: CreateAuthorInput!) : Author!
 }
 
 type Book {
     id: ID!
     title: String!
     genre: Genre!
+    authors: [Author!]!
 }
 
 type Author {
     id: ID!
-    first_name: String!
-    last_name: String!
-    birth_date: Date!
-}
-
-enum Genre {
-    FICTION, NONFICTION
+    firstName: String!
+    lastName: String!
+    birthDate: Date!
 }

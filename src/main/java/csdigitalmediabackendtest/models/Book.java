@@ -1,13 +1,8 @@
 package csdigitalmediabackendtest.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.EnumType;
-import javax.persistence.Id;
-import javax.persistence.GenerationType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
+import csdigitalmediabackendtest.enums.Genre;
+import java.util.List;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -19,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "BOOKS")
-public class Book implements Updatable<Book> {
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,20 +28,13 @@ public class Book implements Updatable<Book> {
     private String title;
 
     @NotNull
-    @NotBlank
     @Enumerated(EnumType.STRING)
     @Column(name = "GENRE")
-    private Book.Genre genre;
+    private Genre genre;
 
-    @Override
-    public void update(Book other) {
-        this.title = other.title;
-        this.genre = other.genre;
+    @ManyToMany(targetEntity = Author.class, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "BOOK_AUTHORS", joinColumns = @JoinColumn(name = "B_ID"),
+        inverseJoinColumns = @JoinColumn(name = "A_ID"))
+    private List<Author> authors;
 
-    }
-
-    public enum Genre {
-        FICTION,
-        NONFICTION
-    }
 }

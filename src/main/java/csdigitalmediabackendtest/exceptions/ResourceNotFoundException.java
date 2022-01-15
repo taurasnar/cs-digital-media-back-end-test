@@ -23,11 +23,8 @@ public class ResourceNotFoundException extends RuntimeException {
      * Constructs ResourceNotFoundException.
      *
      * @param what entity name.
-     * @param authorId id of the Author.
-     * @param bookId id of the Book.
      */
-    public ResourceNotFoundException(String what, Long authorId, Long bookId) {
-        super(StringUtils.capitalize(what) + " not found with a_id '" + authorId
-            + "' and b_id '" + bookId + "'!");
+    public ResourceNotFoundException(String what) {
+        super("At least one of the" + StringUtils.capitalize(what) + "not found!");
     }
 }
