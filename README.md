@@ -12,7 +12,7 @@ This is a Spring Boot application for managing authors and books.
 
 ## Setting up and running the project
 
-- Clone the repository to IntelliJ.
+- Clone the repository to IntelliJ (project uses gradle and java 11, so make sure to have those installed).
 
 - After project loads, run the following command in the terminal:
 ```
