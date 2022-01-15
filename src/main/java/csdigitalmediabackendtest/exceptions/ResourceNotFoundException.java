@@ -1,13 +1,17 @@
 package csdigitalmediabackendtest.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import graphql.ErrorType;
+import graphql.GraphQLError;
+import graphql.language.SourceLocation;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class ResourceNotFoundException extends RuntimeException {
+public class ResourceNotFoundException extends RuntimeException implements GraphQLError {
 
     private static final long serialVersionUID = 4692202166344385262L;
+
+    private Map<String, Object> extensions = new HashMap<>();
 
     /**
      * Constructs ResourceNotFoundException.
@@ -16,7 +20,8 @@ public class ResourceNotFoundException extends RuntimeException {
      * @param id id of the entity.
      */
     public ResourceNotFoundException(String what, Long id) {
-        super(StringUtils.capitalize(what) + " not found with id '" + id + "'!");
+        super(what + " not found with id '" + id + "'!");
+        extensions.put("Invalid id", id);
     }
 
     /**
@@ -25,6 +30,22 @@ public class ResourceNotFoundException extends RuntimeException {
      * @param what entity name.
      */
     public ResourceNotFoundException(String what) {
-        super("At least one of the" + StringUtils.capitalize(what) + "not found!");
+        super("At least one of the" + what + "not found!");
+    }
+
+
+    @Override
+    public List<SourceLocation> getLocations() {
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> getExtensions() {
+        return extensions;
+    }
+
+    @Override
+    public ErrorType getErrorType() {
+        return ErrorType.DataFetchingException;
     }
 }
