@@ -26,6 +26,11 @@ public class QueryResolver implements GraphQLQueryResolver {
 
     // Operations for books
 
+    /**
+     * Finds all Books in the database.
+     *
+     * @return List of Books.
+     */
     public List<Book> findAllBooks() {
         return bookRepository.findAll();
     }

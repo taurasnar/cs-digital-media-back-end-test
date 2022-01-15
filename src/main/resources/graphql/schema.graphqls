@@ -39,22 +39,22 @@ enum Genre {
 # Types
 
 type Query {
-    # Endpoints for books
+    # Operations for books
     findAllBooks: [Book!]!
     findBookById(id: ID!): Book!
 
-    # Endpoints for authors
+    # Operations for authors
     findAllAuthors: [Author!]!
     findAuthorById(id: ID!): Author!
 }
 
 type Mutation {
-    # Endpoints for books
+    # Operations for books
     createBook(book: CreateBookInput!): Book!
     updateBook(book: UpdateBookInput!): Book!
     deleteBook(id: ID!): Boolean
 
-    # Endpoints for authors
+    # Operations for authors
     createAuthor(author: CreateAuthorInput!) : Author!
 }
 
